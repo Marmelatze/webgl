@@ -50,17 +50,20 @@ require({
         hemiLight.position.set(0, 400, 0);
         scene.add(hemiLight);
 
+        // directional light
+
         var dirLight = new THREE.DirectionalLight(0xffffff, 1);
         dirLight.color.setHSL(0.1, 1, 0.95);
-        dirLight.position.set(100, 500, -200);
-        scene.add(dirLight);
+        dirLight.position.set(0, 800, -400);
+        dirLight.target.position.set( 0, 0, -200 );
 
+        scene.add(dirLight);
         dirLight.castShadow = true;
 
         dirLight.shadowMapWidth = 2048;
         dirLight.shadowMapHeight = 2048;
 
-        var d = 200;
+        var d = 500;
 
         dirLight.shadowCameraLeft = -d;
         dirLight.shadowCameraRight = d;
@@ -72,6 +75,21 @@ require({
         dirLight.shadowDarkness = 0.35;
         dirLight.shadowCameraVisible = true;
 
+        //scene.add( new THREE.AmbientLight( 0x111111 ) );
+
+/*
+        var spotLight = new THREE.SpotLight( 0xffffff, 1.15 );
+        spotLight.position.set( 300, 3000, 0 );
+        spotLight.castShadow = true;
+        spotLight.shadowCameraVisible = true;
+        spotLight.shadowMapWidth = 1024; // default is 512
+        spotLight.shadowMapHeight = 1024; // default is 512
+        scene.add( spotLight );*/
+/*
+        var pointLight = new THREE.PointLight( 0xff4400, 1.5 );
+        pointLight.position.set( 0, 0, 0 );
+        scene.add( pointLight );
+*/
         // GROUND
 
         var groundGeo = new THREE.PlaneGeometry(10000, 10000);
@@ -99,7 +117,7 @@ require({
 
         scene.fog.color.copy(uniforms.bottomColor.value);
 
-        var skyGeo = new THREE.SphereGeometry(1000, 32, 15);
+        var skyGeo = new THREE.SphereGeometry(3000, 32, 15);
         var skyMat = new THREE.ShaderMaterial({ vertexShader: vertexShader, fragmentShader: fragmentShader, uniforms: uniforms, side: THREE.BackSide });
 
         var sky = new THREE.Mesh(skyGeo, skyMat);
@@ -107,7 +125,7 @@ require({
 
 
         geometry = new THREE.CubeGeometry(150, 150, 150);
-        material = new THREE.MeshBasicMaterial({
+        material = new THREE.MeshPhongMaterial({
             color:     0x9da4aa,
             wireframe: false
         });
@@ -130,9 +148,18 @@ require({
         renderer.setClearColor( scene.fog.color, 1 );
         renderer.gammaInput = true;
         renderer.gammaOutput = true;
-        renderer.shadowMapEnabled = true;
-        renderer.shadowMapCullFace = THREE.CullFaceBack;
 
+        renderer.shadowMapEnabled = true;
+        renderer.shadowMapSoft = true;
+
+        renderer.shadowCameraNear = 3;
+        renderer.shadowCameraFar = camera.far;
+        renderer.shadowCameraFov = 50;
+
+        renderer.shadowMapBias = 0.0039;
+        renderer.shadowMapDarkness = 0.5;
+        renderer.shadowMapWidth = 1024;
+        renderer.shadowMapHeight = 1024;
     }
 
     function animate() {
