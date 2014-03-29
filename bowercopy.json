@@ -6,7 +6,8 @@
         },
         "files": {
             "three.js": "threejs-build/build/three.js",
-            "require.js": "requirejs/require.js"
+            "require.js": "requirejs/require.js",
+            "TrackballControls.js": "threejs-examples/examples/js/controls/TrackballControls.js"
         }
     }
 }
