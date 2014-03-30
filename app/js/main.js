@@ -4,15 +4,22 @@ require({
     shim:    {
         'vendor/three': { exports: 'THREE' },
         'vendor/TrackballControls': {
-            deps: ['vendor/three'],
-            exports: 'THREE'
+            deps: ['vendor/three']
         }
     }
 }, [
-    'vendor/three',
-    'vendor/TrackballControls'
-], function (THREE) {
+    'src/World',
+    'src/Viewport',
+    'vendor/three'
+], function (World, Viewport) {
 
+    var world = new World();
+    new Viewport({
+        container: document.body,
+        world: world
+    });
+
+    /*
     var camera, controls, scene, renderer;
     var geometry, material, mesh;
 
@@ -20,7 +27,9 @@ require({
     animate();
 
     function init() {
+        //TweenMax.ticker.addEventListener("tick", animate);
 
+        /*
         camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 5000);
         camera.position.set(0, 0, 1800);
 
@@ -54,8 +63,8 @@ require({
 
         var dirLight = new THREE.DirectionalLight(0xffffff, 1);
         dirLight.color.setHSL(0.1, 1, 0.95);
-        dirLight.position.set(0, 800, -400);
-        dirLight.target.position.set( 0, 0, -200 );
+        dirLight.position.set(-100, 800, -400);
+        //dirLight.target.position.set( 0, 0, -200 );
 
         scene.add(dirLight);
         dirLight.castShadow = true;
@@ -73,6 +82,7 @@ require({
         dirLight.shadowCameraFar = 1000;
         dirLight.shadowBias = -0.0001;
         dirLight.shadowDarkness = 0.35;
+        dirLight.shadowCameraFar = 1500;
         dirLight.shadowCameraVisible = true;
 
         //scene.add( new THREE.AmbientLight( 0x111111 ) );
@@ -92,13 +102,14 @@ require({
 */
         // GROUND
 
+        /*
         var groundGeo = new THREE.PlaneGeometry(10000, 10000);
         var groundMat = new THREE.MeshPhongMaterial({ ambient: 0xffffff, color: 0xffffff, specular: 0x050505 });
         groundMat.color.setHSL(0.095, 1, 0.75);
 
         var ground = new THREE.Mesh(groundGeo, groundMat);
         ground.rotation.x = -Math.PI / 2;
-        ground.position.y = -33;
+        ground.position.y = -100;
         scene.add(ground);
 
         ground.receiveShadow = true;
@@ -124,14 +135,14 @@ require({
         scene.add(sky);
 
 
-        geometry = new THREE.CubeGeometry(150, 150, 150);
+        geometry = new THREE.CubeGeometry(150, 200, 150);
         material = new THREE.MeshPhongMaterial({
             color:     0x9da4aa,
             wireframe: false
         });
 
         mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(0, 150, 0);
+        mesh.position.set(0, 0, 0);
         mesh.castShadow = true;
         mesh.receiveShadow = true;
         scene.add(mesh);
@@ -160,6 +171,8 @@ require({
         renderer.shadowMapDarkness = 0.5;
         renderer.shadowMapWidth = 1024;
         renderer.shadowMapHeight = 1024;
+
+        //new TWEEN.Tween( controls.target ).to( {  x:100}, 1000).repeat( Infinity ).easing( TWEEN.Easing.Quadratic.Out).start();
     }
 
     function animate() {
@@ -167,12 +180,11 @@ require({
         // note: three.js includes requestAnimationFrame shim
         requestAnimationFrame(animate);
 
-        mesh.rotation.x += 0.01;
-        mesh.rotation.y += 0.02;
+        //mesh.rotation.x += 0.01;
+        //mesh.rotation.y += 0.02;
         controls.update();
 
         renderer.render(scene, camera);
-
-    }
+    }*/
 
 });

@@ -4,6 +4,7 @@
   "dependencies": {
     "threejs-build": "",
     "threejs-examples": "",
+    "greensock": "1.11.6",
     "requirejs": "~2.1.9"
   }
 }

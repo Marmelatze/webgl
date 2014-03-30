@@ -1,13 +1,21 @@
 {
     "libs": {
         "options": {
-            "destPrefix": "app/js/vendor",
-            "clean": true
+            "destPrefix": "app/js/vendor"
         },
         "files": {
             "three.js": "threejs-build/build/three.js",
             "require.js": "requirejs/require.js",
-            "TrackballControls.js": "threejs-examples/examples/js/controls/TrackballControls.js"
+            "TrackballControls.js": "threejs-examples/examples/js/controls/TrackballControls.js",
+            "Tween.js": "createjs-tweenjs/lib/tweenjs-0.5.1.min.js"
+        }
+    },
+    "folders": {
+        "options": {
+            "destPrefix": "app/js/vendor"
+        },
+        "files": {
+            "greensock": "greensock/src/minified"
         }
     }
 }
