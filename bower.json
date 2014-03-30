@@ -1,11 +1,12 @@
 {
-  "name": "temp",
-  "version": "0.0.0",
-  "dependencies": {
-    "threejs-build": "",
-    "threejs-examples": "",
-    "greensock": "1.11.6",
-    "requirejs": "~2.1.9"
-  }
+    "name":         "temp",
+    "version":      "0.0.0",
+    "dependencies": {
+        "threejs-build":    "",
+        "threejs-examples": "",
+        "threejs-stats":    "",
+        "greensock":        "1.11.6",
+        "requirejs":        "~2.1.9"
+    }
 }
 

@@ -41,16 +41,18 @@ define([
         this.renderer.gammaOutput = true;
 
         this.renderer.shadowMapEnabled = true;
-        this.renderer.shadowMapSoft = true;
+        //this.renderer.shadowMapCullFrontFaces = true;
+        //this.renderer.shadowMapSoft = true;
 
         this.renderer.shadowCameraNear = 3;
         this.renderer.shadowCameraFar = this.camera.far;
-        this.renderer.shadowCameraFov = 50;
+        this.renderer.shadowCameraFov = 100;
 
-        this.renderer.shadowMapBias = 0.0039;
-        this.renderer.shadowMapDarkness = 0.5;
-        this.renderer.shadowMapWidth = 1024;
-        this.renderer.shadowMapHeight = 1024;
+        this.renderer.shadowMapType = THREE.PCFShadowMap; // options are THREE.BasicShadowMap | THREE.PCFShadowMap | THREE.PCFSoftShadowMap
+        this.renderer.shadowMapBias = 0.0001;
+        this.renderer.shadowMapDarkness = 0.3;
+        this.renderer.shadowMapWidth = 2048;
+        this.renderer.shadowMapHeight = 2048;
 
         this.el.appendChild(this.renderer.domElement);
     };
@@ -70,7 +72,7 @@ define([
     };
 
     Viewport.prototype.addCamera = function () {
-        this.camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 5000);
+        this.camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 20000);
         this.camera.position.set(0, 0, 1800);
     };
 

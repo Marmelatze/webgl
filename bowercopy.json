@@ -7,7 +7,7 @@
             "three.js": "threejs-build/build/three.js",
             "require.js": "requirejs/require.js",
             "TrackballControls.js": "threejs-examples/examples/js/controls/TrackballControls.js",
-            "Tween.js": "createjs-tweenjs/lib/tweenjs-0.5.1.min.js"
+            "Stats.js": "threejs-stats/Stats.js"
         }
     },
     "folders": {
