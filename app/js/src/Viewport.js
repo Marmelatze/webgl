@@ -48,11 +48,11 @@ define([
         this.renderer.shadowCameraFar = this.camera.far;
         this.renderer.shadowCameraFov = 100;
 
-        this.renderer.shadowMapType = THREE.PCFShadowMap; // options are THREE.BasicShadowMap | THREE.PCFShadowMap | THREE.PCFSoftShadowMap
-        this.renderer.shadowMapBias = 0.0001;
-        this.renderer.shadowMapDarkness = 0.3;
-        this.renderer.shadowMapWidth = 2048;
-        this.renderer.shadowMapHeight = 2048;
+        this.renderer.shadowMapType = THREE.PCFSoftShadowMap; // options are THREE.BasicShadowMap | THREE.PCFShadowMap | THREE.PCFSoftShadowMap
+        // /this.renderer.shadowMapBias = 0.0001;
+        this.renderer.shadowMapDarkness = 0.2;
+        this.renderer.shadowMapWidth = 1024;
+        this.renderer.shadowMapHeight = 1024;
 
         this.el.appendChild(this.renderer.domElement);
     };

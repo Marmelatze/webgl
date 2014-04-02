@@ -19,6 +19,7 @@
         "requestAnimationFrame": false,
         "THREE": true,
         "TweenMax": true,
+        "Quad": true,
         "define": false
     }
 }

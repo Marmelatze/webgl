@@ -27,28 +27,28 @@ define([
 
         // directional light
 
-        var dirLight = new THREE.DirectionalLight(0xffffff, 1);
+        var dirLight = new THREE.SpotLight(0xffffff, 1);
         dirLight.color.setHSL(0.1, 1, 0.95);
-        dirLight.position.set(-300, 800, -400);
+        dirLight.position.set(-400, 1500, -400);
 
         dirLight.castShadow = true;
-        dirLight.shadowMapWidth = 2048;
-        dirLight.shadowMapHeight = 2048;
+        dirLight.shadowMapWidth = 1024;
+        dirLight.shadowMapHeight = 1024;
 
         var d = 2000;
-
+/*
         dirLight.shadowCameraLeft = -d;
         dirLight.shadowCameraRight = d;
         dirLight.shadowCameraTop = d;
         dirLight.shadowCameraBottom = -d;
-
-        dirLight.shadowDarkness = 0.3;
-        dirLight.shadowBias = 0.0001;
-        dirLight.shadowCameraFar = 1500;
+*/
+        dirLight.shadowDarkness = 0.2;
+        dirLight.shadowBias = 0;
+        dirLight.shadowCameraFar = 3000;
         dirLight.shadowCameraVisible = true;
         this.scene.add(dirLight);
 
-        TweenMax.to(dirLight.position, 6, {x: 300, yoyo: true, repeat: -1, ease: Quad.easeInOut});
+        TweenMax.to(dirLight.position, 10, {x: 400, yoyo: true, repeat: -1, ease: Quad.easeInOut});
     };
 
     World.prototype.addGround = function () {
@@ -107,7 +107,7 @@ define([
             color: 0x9da4aa
         });
 
-        var cityMesh = new THREE.Mesh(cityGeometry, material );
+        var cityMesh = new THREE.Mesh(cityGeometry, material);
         cityMesh.castShadow = true;
         cityMesh.receiveShadow = true;
         this.scene.add(cityMesh);
